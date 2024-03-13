@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { UseSelector } from 'react-redux';
-
+import { deleteBook } from "../../redux/features/create/createActions"
 import { updateBook } from '@/app/redux/features/create/createActions';
 import { useDispatch } from 'react-redux';
 
@@ -40,6 +40,18 @@ const BookDetail = ({ params }) => {
         setIsEditing(true);
     };
 
+    const handleDelete = async () => {
+        try {
+            await dispatch(deleteBook(id));
+            setSuccessMessage('¡Libro eliminado exitosamente!');
+            setTimeout(() => {
+                router.push('/home'); // Redirige a la página de inicio después de eliminar el libro
+            }, 2000);
+        } catch (error) {
+            console.error('Error deleting book:', error);
+        }
+    };
+
     const handleSaveChanges = async () => {
         try {
             await dispatch(updateBook(editedBook));
@@ -68,6 +80,8 @@ const BookDetail = ({ params }) => {
         }
     }, [successMessage]);
 
+    
+
     return (
         <div>
             <div>
@@ -83,21 +97,21 @@ const BookDetail = ({ params }) => {
                             <p className="text-lg text-white">Género: {book.genre}</p>
                             <p className="text-lg text-white">Año de publicación: {book.year}</p>
                             <button onClick={handleEdit} className="bg-blue-500 text-white px-4 py-2 rounded mt-4">Editar</button>
+                            <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded mt-4 ml-4">Eliminar</button>
                         </>
                     ) : (
                         <>
-                        <label>Titulo:
-                            <input type="text" name="title" className='text-black' value={editedBook.title} onChange={handleInputChange} />
+                            <label>Titulo:
+                                <input type="text" name="title" className='text-black' value={editedBook.title} onChange={handleInputChange} />
                             </label>
                             <label>Autor:
-                            <input type="text" name="author"  className='text-black'value={editedBook.author} onChange={handleInputChange} />
+                                <input type="text" name="author"  className='text-black'value={editedBook.author} onChange={handleInputChange} />
                             </label>
-                           
                             <label>Año de publicación:
-                            <input type="text" name="year"  className='text-black'value={editedBook.year} onChange={handleInputChange} />
+                                <input type="text" name="year"  className='text-black'value={editedBook.year} onChange={handleInputChange} />
                             </label>
                             <label>Género:
-                            <input type="text" name="genre"  className='text-black'value={editedBook.genre} onChange={handleInputChange} />
+                                <input type="text" name="genre"  className='text-black'value={editedBook.genre} onChange={handleInputChange} />
                             </label>
                             <button onClick={handleSaveChanges} className="bg-green-500 text-white px-4 py-2 rounded mt-4">Guardar cambios</button>
                         </>

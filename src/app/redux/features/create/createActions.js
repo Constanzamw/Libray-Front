@@ -1,5 +1,5 @@
 import {
-  createBookStart, createBookSuccess ,createBookFailure ,updateBookStart,  updateBookSuccess,  updateBookFailure
+  createBookStart, createBookSuccess ,createBookFailure ,updateBookStart,  updateBookSuccess,  updateBookFailure, deleteBookStart, deleteBookSuccess, deleteBookFailure
   } from "./createSlice";
   import axios from "axios";
 
@@ -25,6 +25,16 @@ import {
       return response.data;
     } catch (error) {
       dispatch(updateBookFailure(error.message));
+      throw error;
+    }
+  };
+  export const deleteBook = (id) => async (dispatch) => {
+    dispatch(deleteBookStart());
+    try {
+      await axios.delete(`${URL_BASE}/books/${id}`);
+      dispatch(deleteBookSuccess(id));
+    } catch (error) {
+      dispatch(deleteBookFailure(error.message));
       throw error;
     }
   };

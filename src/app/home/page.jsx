@@ -16,7 +16,9 @@ export default function Home() {
   return (
     <div>
       <Nav/>
+      <div>
         <Card />
+      </div>
     </div>
 );
 };

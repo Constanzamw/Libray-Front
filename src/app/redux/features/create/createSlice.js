@@ -38,10 +38,22 @@ const bookSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    deleteBookStart(state) {
+      state.loading = true;
+      state.error = null;
+    },
+    deleteBookSuccess(state, action) {
+      state.loading = false;
+      state.books = state.books.filter(book => book._id !== action.payload);
+    },
+    deleteBookFailure(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
-export const { createBookStart, createBookSuccess ,createBookFailure,updateBookStart,  updateBookSuccess,  updateBookFailure } = bookSlice.actions;
+export const { createBookStart, createBookSuccess ,createBookFailure,updateBookStart,  updateBookSuccess,  updateBookFailure, deleteBookStart, deleteBookSuccess, deleteBookFailure } = bookSlice.actions;
 
  export default bookSlice.reducer;
 
