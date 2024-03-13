@@ -2,7 +2,8 @@ import {
     getUser,
     getUserFavorites,
     login,
-    logout
+    logout,
+    register
   } from "./userSlice";
   import axios from "axios";
 
@@ -36,6 +37,19 @@ import {
       alert('Hubo un problema al cerrar la sesión');
     }
   };
+
+  export const registerUser = (userData) => async (dispatch) => {
+    try {
+      const response = await axios.post(`${URL_BASE}/users`, userData);
+      dispatch(register(response.data)); // Dispatch the register action with the newly registered user data
+      alert('Registro exitoso');
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Hubo un problema al registrar el usuario');
+    }
+  };
+
+
 
   export const getFavorites = () => async (dispatch, getState) => {
     try {

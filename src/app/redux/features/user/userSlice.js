@@ -21,22 +21,15 @@ export const authSlice  = createSlice({
           state.isAuthenticated = false;
           state.user = null;
         },
+        register(state, action) {
+          state.isAuthenticated = true;
+          state.user = action.payload;
+        },
       },
     });
-//     reducers: {
-//         getUser: (state, action) => {
-//             state.logedInUser = action.payload;
-//           },
-//           getUserFavorites: (state, action) => {
-//             state.logedInUser.favorites = action.payload;
-//           },
-//     }
-// })  
 
-export const { login, logout } = authSlice.actions;
-// export const {
-//     getUser,
-//     getUserFavorites
-// } = userSlice.actions;
+
+export const { login, logout,register } = authSlice.actions;
+
 
 export default authSlice.reducer;

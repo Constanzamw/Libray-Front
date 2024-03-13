@@ -4,6 +4,7 @@
  import { useDispatch } from "react-redux";
  import { loginUser } from "../redux/features/user/userActions";
  import { useRouter } from 'next/navigation';
+import { Link } from 'react-router-dom';
  const LoginForm = () => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
@@ -21,6 +22,7 @@
        <input type="email" placeholder="Correo electrónico" className='text-black' value={email} onChange={(e) => setEmail(e.target.value)} />
        <input type="password" placeholder="Contraseña" className='text-black'  value={password} onChange={(e) => setPassword(e.target.value)} />
        <button type="submit">Iniciar sesión</button>
+       <p>¿Aún no estás registrado? <a href="/register">Crea tu cuenta</a></p>
      </form>
    );
  };
