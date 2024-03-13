@@ -2,22 +2,29 @@
 
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFavorites } from "../redux/features/favorites/favoriteActions";
+import { fetchFavorites } from "../redux/features/favorites/favoriteActions";
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
-  const favorites = useSelector(state => state.favorites.favorites); // Accede a los favoritos del estado de Redux
+  // const userId = localStorage.getItem('userId')
+  const userId = typeof localStorage !== 'undefined' ? localStorage.getItem('userId') : null;
+  console.log(userId, "idfavo");
+  const favorites = useSelector(state => state.favorites.favorites);
 
   useEffect(() => {
-    dispatch(getFavorites()); // Despacha la acción para obtener los favoritos del usuario al montar el componente
-  }, [dispatch]);
+    if (userId) {
+      dispatch(fetchFavorites(userId)); // Pasar userId a fetchFavorites para obtener los favoritos del usuario
+    }
+  }, [dispatch, userId]);
 
   return (
     <div>
       <h1>Tus favoritos</h1>
       <ul>
         {favorites.map(favorite => (
-          <li key={favorite._id}>{favorite.title}</li> // Ajusta esto según la estructura de tus favoritos
+          <div key={favorite._id}>
+            <h2>{favorite.title}</h2>
+            </div>
         ))}
       </ul>
     </div>

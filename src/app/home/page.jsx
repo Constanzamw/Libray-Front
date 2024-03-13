@@ -14,7 +14,7 @@ export default function Home() {
 
 
   return (
-    <div>
+    <div className='bg-green'>
       <Nav/>
       <div>
         <Card />

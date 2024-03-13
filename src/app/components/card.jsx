@@ -30,14 +30,14 @@ export default function Card() {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-4">Libros</h2>
-      <div className="grid grid-cols-4 gap-8">
+      <h2 className="text-3xl font-bold mb-4 bg-primary text-center ">LIBROS</h2>
+      <div className="grid grid-cols-3 gap-9 px-[60px]">
         {books.map(book => (
-            <div key={book._id} className="border border-gray-300 rounded p-4">
+            <div key={book._id} className="border border-primary rounded p-4 shadow-2xl ">
               
             <Link href={`/book/${book._id}`}>
-              <h3 className="text-md font-semibold mb-2">{book.title}</h3>
-              <p className="text-sm">Autor: {book.author}</p>
+              <h3 className="text-lg font-semibold mb-2 text-center ">{book.title}</h3>
+              <p className="text-md text-center">Autor: {book.author}</p>
             </Link>
           </div>
         ))}

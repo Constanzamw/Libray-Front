@@ -24,16 +24,16 @@ export default function Nav() {
   };
 
   return (
-    <nav className="bg-transparent py-4 px-4 md:py-8 md:px-8 text-artistfont mb-[1px] bg-red-700">
+    <nav className="bg-transparent py-4 px-4 md:py-8 md:px-8 text-artistfont mb-[1px] ">
       <ul className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-8">
         <div className="text-center md:flex md:justify-center">
           <li>
             <Link href="/home">
               <span
-                className={`font-rocksalt text-md lg:text-4xl hover:text-pink-600 hover:border-pink-600 border-b-[2px] ${
-                  activeLink === "/home" ? "text-pink-600 border-pink-600" : ""
+                className={`text-xl hover:text-primary hover:border-primary border-b-[2px] ${
+                  activeLink === "/home" ? "text-primary border-primary" : ""
                 }`}
-                onClick={() => handleLinkClick("/")}
+                
               >
                 Middas - Libreria
               </span>
@@ -41,16 +41,14 @@ export default function Nav() {
           </li>
         </div>
         <div className="flex items-center gap-x-4 md:gap-x-8">
-          <li>
-          <button onClick={handleLogout}>Cerrar sesión</button>
-          </li>
+          
           <li>
             <Link href="/favorites">
               <span
-                className={`font-rocksalt text-md lg:text-4xl hover:text-pink-600 hover:border-pink-600 border-b-[2px] ${
-                  activeLink === "/favorites" ? "text-pink-600 border-pink-600" : ""
+                className={` text-xl hover:text-primary hover:border-primary border-b-[2px] ${
+                  activeLink === "/favorites" ? "text-primary border-primary" : ""
                 }`}
-                onClick={() => handleLinkClick("/favorites")}
+                
               >
                 Favoritos
               </span>
@@ -59,16 +57,18 @@ export default function Nav() {
           <li>
             <Link href="/createBook">
               <span
-                className={`font-rocksalt text-md lg:text-4xl hover:text-pink-600 hover:border-pink-600 border-b-[2px] ${
-                  activeLink === "/createBook" ? "text-pink-600 border-pink-600" : ""
+                className={` text-xl hover:text-primary hover:border-primary border-b-[2px] ${
+                  activeLink === "/createBook" ? "text-primary border-primary" : ""
                 }`}
-                onClick={() => handleLinkClick("/createBook")}
-              >
+                              >
                 Crear Libro
               </span>
             </Link>
           </li>
         </div>
+        <li>
+          <button onClick={handleLogout} className="text-sm hover:text-primary hover:border-primary border-b-[2px]">Cerrar sesión</button>
+          </li>
       </ul>
     </nav>
   );

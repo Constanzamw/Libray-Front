@@ -16,7 +16,9 @@ import {
   
       const user = users.find(u => u.email === email && u.password === password);
       if (user) {
-        dispatch(login(user)); // Despacha la acción de login con el usuario encontrado
+        localStorage.setItem('userId', user._id);
+        dispatch(login(user)); 
+        //console.log(user,"USER")
         alert('Inicio de sesión exitoso');
       } else {
         alert('Credenciales inválidas');
@@ -51,16 +53,7 @@ import {
 
 
 
-  export const getFavorites = () => async (dispatch, getState) => {
-    try {
-      const { user } = getState().auth;
-      const response = await axios.get(`${URL_BASE}/users/${user._id}/favorites`);
-      const favorites = response.data;
-      dispatch({ type: 'SET_FAVORITES', payload: favorites });
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+
 
 //   export const getUser = async () => {
 //     try {

@@ -8,7 +8,12 @@ import booksReducer from "./features/create/createSlice"
 export const store = configureStore({
     reducer: {
         auth: authReducer ,
+       
         favorites:favoritesReducer,
         books:booksReducer
     }
-})
+    
+    
+});
+
+console.log('Estado de Redux después de configurar el store:', store.getState());
