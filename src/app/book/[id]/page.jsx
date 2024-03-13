@@ -84,7 +84,7 @@ const BookDetail = ({ params }) => {
       <div>
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded"
+          className="absolute top-4 right-4 bg-red-500/40 text-black hover:bg-red-500 hover:text-white px-4 py-2 rounded"
         >
           X
         </button>
@@ -116,13 +116,13 @@ const BookDetail = ({ params }) => {
               <div className="flex justify-center">
                 <button
                   onClick={handleEdit}
-                  className="bg-blue-500 text-white px-4 py-2 rounded mt-4  "
+                  className="bg-primary hover:bg-blue-500 text-white px-4 py-2 rounded mt-4  "
                 >
                   Editar
                 </button>
                 <button
                   onClick={handleDelete}
-                  className="bg-red-500 text-white px-4 py-2 rounded mt-4 ml-4 "
+                  className="bg-primary hover:bg-red-600 text-white px-4 py-2 rounded mt-4 ml-4 "
                 >
                   Eliminar
                 </button>

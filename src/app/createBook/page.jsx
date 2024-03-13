@@ -93,7 +93,7 @@ const CreateBookForm = () => {
         <label className='mr-2' >Imagen:</label>
         <input type="text" name="image"  className='text-black' value={formData.image} onChange={handleChange} placeholder='ingrese url de imagen' />
       </div>
-      <button type="submit" disabled={!isFormValid || loading} className="w-full bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50">Guardar</button>
+      <button type="submit" disabled={!isFormValid || loading} className="w-full bg-primary text-white px-4 py-2 rounded disabled:opacity-50">Guardar</button>
     </form>
     {loading && <p>Cargando...</p>}
     {error && <p>Error al crear el libro: {error}</p>}

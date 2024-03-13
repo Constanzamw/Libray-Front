@@ -27,15 +27,16 @@ export default function Nav() {
     <nav className="bg-transparent py-4 px-4 md:py-8 md:px-8 text-artistfont mb-[1px] ">
       <ul className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-8">
         <div className="text-center md:flex md:justify-center">
+        <img src="/middaslogo.png" alt="Middas Logo" className="h-10 w-auto mr-3" />
           <li>
             <Link href="/home">
               <span
-                className={`text-xl hover:text-primary hover:border-primary border-b-[2px] ${
+                className={`text-xl hover:text-primary hover:border-primary border-b-[2px]  ${
                   activeLink === "/home" ? "text-primary border-primary" : ""
                 }`}
                 
               >
-                Middas - Libreria
+                Middas 
               </span>
             </Link>
           </li>
