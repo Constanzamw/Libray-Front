@@ -20,7 +20,7 @@ import {
   export const updateBook = (bookData) => async (dispatch) => {
     dispatch(updateBookStart());
     try {
-      const response = await axios.put(`${API_URL}/books/${bookData._id}`, bookData);
+      const response = await axios.put(`${URL_BASE}/books/${bookData._id}`, bookData);
       dispatch(updateBookSuccess(response.data));
       return response.data;
     } catch (error) {
