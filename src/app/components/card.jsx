@@ -30,7 +30,7 @@ export default function Card() {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-4 bg-primary text-center ">LIBROS</h2>
+      <h2 className="text-3xl font-bold mb-4 bg-primary text-center text-white ">LIBROS</h2>
       <div className="grid grid-cols-3 gap-9 px-[60px]">
         {books.map(book => (
             <div key={book._id} className="border border-primary rounded p-4 shadow-2xl ">

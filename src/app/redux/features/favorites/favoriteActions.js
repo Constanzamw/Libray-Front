@@ -28,27 +28,18 @@ import {
   
   export const fetchFavorites = (userId) => async (dispatch) => {
     try {
-      const response = await axios.get(`${URL_BASE}/users/${userId}/favorites`);
-      console.log(userId, "fectch")
       dispatch(clearFavorites());
+      const response = await axios.get(`${URL_BASE}/users/${userId}/favorites`);
       dispatch(addToFavorites(response.data));
     } catch (error) {
       console.error('Error fetching favorites:', error);
-     
     }
+  };
+  export const clearAllFavorites = () => (dispatch) => {
+    dispatch(clearFavorites());
   };
 
 
-  // export const getFavorites = () => async (dispatch, getState) => {
-  //   try {
-  //     const { user } = getState().auth;
-  //     const response = await axios.get(`${URL_BASE}/users/${user._id}/favorites`);
-  //     const favorites = response.data;
-  //     dispatch(setFavorites(favorites)); 
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // };
 
 
 
