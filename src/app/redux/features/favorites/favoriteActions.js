@@ -23,7 +23,7 @@ import {
       console.error('Error removing favorite:', error);
     }
   };
-  
+
   export const fetchFavorites = (userId) => async (dispatch) => {
     try {
       dispatch(clearFavorites());

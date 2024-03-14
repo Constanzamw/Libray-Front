@@ -22,7 +22,7 @@ console.log('userId', userId);
 
   return (
     <div>
-      <h1>Tus favoritos</h1>
+      <h1 className="text-3xl text-white text-center font-bold my-[35px]  bg-primary">TUS FAVORITOS</h1>
       <div className="grid grid-cols-3 gap-9 px-[60px]">
         {favorites.length > 0 ? (
           favorites.map(favorite => (
@@ -33,7 +33,7 @@ console.log('userId', userId);
         )}
       </div>
       <Link href="/home">
-      <button className="bg-primary hover:bg-red-600 text-white px-4 py-2 rounded mt-4 ml-4 "> Volver </button></Link>
+      <button className="bg-primary hover:bg-red-600 text-white px-4 py-2 rounded mt-10 ml-8 "> Volver </button></Link>
     </div>
   );
 };
