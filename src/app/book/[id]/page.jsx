@@ -1,11 +1,11 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import { useSelector,useDispatch } from "react-redux";
 import axios from "axios";
-import { UseSelector } from "react-redux";
-import { deleteBook } from "../../redux/features/create/createActions";
-import { updateBook } from "@/app/redux/features/create/createActions";
-import { useDispatch } from "react-redux";
+import { deleteBook,updateBook } from "../../redux/features/create/createActions";
+import { addFavorite, removeFavorite } from "@/app/redux/features/favorites/favoriteActions";
+
 
 const BookDetail = ({ params }) => {
   const router = useRouter();
@@ -78,6 +78,20 @@ const BookDetail = ({ params }) => {
       return () => clearTimeout(timer);
     }
   }, [successMessage]);
+
+  //FAVORITES
+  const favorites = useSelector(state => state.favorites.favorites);
+  const isFavorite = favorites.some(favorite => favorite._id === book?._id);
+  const userId = typeof localStorage !== 'undefined' ? localStorage.getItem('userId') : null;
+
+  const handleToggleFavorite = () => {
+    if (isFavorite) {
+      dispatch(removeFavorite(userId, book._id));
+    } else {
+      dispatch(addFavorite(userId, book._id));
+    }
+  };
+
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -180,6 +194,11 @@ const BookDetail = ({ params }) => {
               </div>
             </>
           )}
+          <div className="flex justify-center">
+          <button onClick={handleToggleFavorite} className="bg-blue-500 text-white px-4 py-2 rounded mt-4 text-lg">
+            {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+          </button>
+        </div>
         </div>
       )}
       {successMessage && (

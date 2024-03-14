@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const FavoriteCard = ({ favorite }) => {
   return (
-    <div key={favorite._id} className="border border-primary rounded p-4 shadow-2xl">
+    <div className="border border-primary rounded p-4 shadow-2xl">
       <Link href={`/book/${favorite._id}`}>
         <h3 className="text-lg font-semibold mb-2 text-center">{favorite.title}</h3>
       </Link>
@@ -12,5 +12,5 @@ const FavoriteCard = ({ favorite }) => {
     </div>
   );
 };
-
 export default FavoriteCard;
+

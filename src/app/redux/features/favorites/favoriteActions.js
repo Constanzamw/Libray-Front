@@ -5,24 +5,22 @@ import {
 
   const URL_BASE = "http://localhost:3000";
 
+
   export const addFavorite = (userId, bookId) => async (dispatch) => {
     try {
-      const response = await axios.post(`${URL_BASE}/users/${userId}/favorites`, { bookId });
-      dispatch(addToFavorites(response.data));
+      await axios.post(`${URL_BASE}/users/${userId}/favorites`, { bookId });
+      dispatch(addToFavorites(bookId));
     } catch (error) {
       console.error('Error adding favorite:', error);
-     
     }
   };
   
   export const removeFavorite = (userId, bookId) => async (dispatch) => {
     try {
       await axios.delete(`${URL_BASE}/users/${userId}/favorites/${bookId}`);
-      console.log(userId, "rem")
       dispatch(removeFromFavorites(bookId));
     } catch (error) {
       console.error('Error removing favorite:', error);
-    
     }
   };
   

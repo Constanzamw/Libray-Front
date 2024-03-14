@@ -7,17 +7,19 @@ import Nav from "../components/nav/Nav";
 import Card from "../components/card";
 import { useSelector } from 'react-redux';
 
-
+import { useDispatch } from 'react-redux';
 
 export default function Home() { 
   const router = useRouter()
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     if (!isAuthenticated) {
       router.push('/'); 
     }
   }, [isAuthenticated, router]);
+
+ 
 
   return (
     <div className='bg-green'>
@@ -25,6 +27,7 @@ export default function Home() {
       <div>
         <Card />
       </div>
+     
     </div>
 );
 };

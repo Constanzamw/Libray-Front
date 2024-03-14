@@ -4,6 +4,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFavorites } from "../redux/features/favorites/favoriteActions";
 import FavoriteCard from '../components/favoriteCard/favoriteCard';
+
+
 const FavoritesPage = () => {
   const dispatch = useDispatch();
   // const userId = localStorage.getItem('userId')
